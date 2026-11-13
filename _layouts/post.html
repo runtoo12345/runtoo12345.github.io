@@ -1,0 +1,57 @@
+---
+layout: default
+---
+{%- assign cat_count = page.categories | size -%}
+<div class="shell">
+  <article class="post">
+    <header class="post__head">
+      <p class="back"><a href="{{ '/articles/' | relative_url }}">返回文章列表</a></p>
+      {%- if page.placeholder or cat_count > 0 -%}
+        <p class="kicker">
+          {%- if page.placeholder -%}占位{%- endif -%}
+          {%- if page.placeholder and cat_count > 0 -%} · {%- endif -%}
+          {%- if cat_count > 0 -%}{{ page.categories | first | escape }}{%- endif -%}
+        </p>
+      {%- endif -%}
+      <h1>{{ page.title | escape }}</h1>
+      <p class="post__meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}"><span class="sr-only">发布于 </span>{{ page.date | date: "%Y年%m月%d日" }}</time>
+      </p>
+      {%- if page.planned_title -%}
+        <p class="entry__planned">计划中的题目：{{ page.planned_title | escape }}</p>
+      {%- endif -%}
+      {%- if page.placeholder -%}
+        <p class="notice" role="note">这是一篇占位说明，正式文章还没写好。</p>
+      {%- endif -%}
+    </header>
+
+    <div class="prose">
+      {{ content }}
+    </div>
+
+    {%- if page.previous or page.next -%}
+      <nav class="pager" aria-label="其他文章">
+        <div class="pager__slot">
+          {%- if page.previous -%}
+            <a href="{{ page.previous.url | relative_url }}">
+              <span>较早的一篇</span>
+              <span>{{ page.previous.title | escape }}</span>
+            </a>
+          {%- endif -%}
+        </div>
+        <div class="pager__slot pager__slot--end">
+          {%- if page.next -%}
+            <a href="{{ page.next.url | relative_url }}">
+              <span>较新的一篇</span>
+              <span>{{ page.next.title | escape }}</span>
+            </a>
+          {%- endif -%}
+        </div>
+      </nav>
+    {%- endif -%}
+
+    <footer class="post__end">
+      <p class="signature" translate="no">runtoo</p>
+    </footer>
+  </article>
+</div>
