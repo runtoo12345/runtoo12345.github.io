@@ -1,0 +1,16 @@
+---
+layout: default
+title: 文章
+permalink: /articles/
+body_class: page-articles
+description: runtoo 的文章。以投资记录为主，自我成长和海外生活准备写在旁边。
+---
+
+<div class="shell">
+  <header class="page-head">
+    <p class="kicker">目录</p>
+    <h1>文章</h1>
+    <p class="deck">按时间倒序排列。写好的记录会出现在最上面。</p>
+  </header>
+  {% include post-list.html posts=site.posts heading="h2" %}
+</div>

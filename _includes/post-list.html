@@ -1,0 +1,52 @@
+{%- comment -%}
+  posts: 文章数组，通常是 site.posts
+  limit: 可选，只显示前几篇
+  heading: h2 或 h3，默认 h2
+{%- endcomment -%}
+{%- assign heading = include.heading | default: "h2" -%}
+{%- if include.limit -%}
+  {%- assign posts = include.posts | slice: 0, include.limit -%}
+{%- else -%}
+  {%- assign posts = include.posts -%}
+{%- endif -%}
+{%- assign count = posts | size -%}
+{%- if count == 0 -%}
+  <p class="empty">还没有公开的文章。</p>
+{%- else -%}
+  <ol class="entries" role="list">
+    {%- for post in posts -%}
+      {%- assign cat_count = post.categories | size -%}
+      {%- assign summary = post.excerpt | strip_html | strip | escape -%}
+      <li class="entry">
+        <article>
+          <div class="entry__meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}"><span class="sr-only">发布于 </span>{{ post.date | date: "%Y.%m.%d" }}</time>
+            {%- if post.placeholder or cat_count > 0 -%}
+              <ul class="tags" role="list">
+                {%- if post.placeholder -%}
+                  <li class="tag-placeholder">占位</li>
+                {%- endif -%}
+                {%- for cat in post.categories -%}
+                  <li>{{ cat | escape }}</li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </div>
+          <div class="entry__main">
+            {%- if heading == "h3" -%}
+              <h3 class="entry__title"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+            {%- else -%}
+              <h2 class="entry__title"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+            {%- endif -%}
+            {%- if post.planned_title -%}
+              <p class="entry__planned">计划中的题目：{{ post.planned_title | escape }}</p>
+            {%- endif -%}
+            {%- if summary != "" -%}
+              <p class="entry__excerpt">{{ summary }}</p>
+            {%- endif -%}
+          </div>
+        </article>
+      </li>
+    {%- endfor -%}
+  </ol>
+{%- endif -%}
