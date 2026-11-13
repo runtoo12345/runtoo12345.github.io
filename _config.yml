@@ -1,0 +1,58 @@
+# runtoo 手记
+# GitHub Pages 从 main 分支根目录用 Jekyll 构建。不要添加 .nojekyll。
+# theme 必须显式写成 null。Pages 默认会套上 primer，盖掉这套版式。
+
+title: runtoo
+tagline: 投资与成长手记
+description: 记录投资得失与自我成长，为未来的海外生活做准备，分享给同样在寻找更多人生选择的人。
+lang: zh-CN
+author:
+  name: runtoo
+
+url: https://runtoo12345.github.io
+baseurl: ""
+timezone: Asia/Shanghai
+# 盖掉 Pages 默认的 future: true。日期晚于构建时间的文章不会出现。
+# Pages 只在推送时构建，不要把未来日期当成定时发布。
+future: false
+
+theme: null
+markdown: kramdown
+permalink: /posts/:year/:month/:day/:title/
+excerpt_separator: "<!-- more -->"
+encoding: utf-8
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+  auto_ids: true
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+titles_from_headings:
+  enabled: false
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      body_class: page-post
+      author: runtoo
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle
+  - .gitignore
+  - node_modules
+
+feed:
+  path: feed.xml
