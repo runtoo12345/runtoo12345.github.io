@@ -2,7 +2,7 @@
 # GitHub Pages 从 main 分支根目录用 Jekyll 构建。不要添加 .nojekyll。
 # theme 必须显式写成 null。Pages 默认会套上 primer，盖掉这套版式。
 
-title: runtoo
+title: 润土个人站
 tagline: 投资与成长手记
 description: 记录投资得失与自我成长，为未来的海外生活做准备，分享给同样在寻找更多人生选择的人。
 lang: zh-CN
