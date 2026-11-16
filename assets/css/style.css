@@ -187,18 +187,13 @@ a:hover {
   white-space: nowrap;
 }
 
-.seal {
+.brand__avatar {
   width: 2.5rem;
   height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1.5px solid var(--seal);
-  color: var(--seal);
-  font-size: 1.15rem;
-  font-weight: 650;
-  line-height: 1;
+  display: block;
+  object-fit: cover;
   flex: none;
+  border: 1.5px solid var(--seal);
 }
 
 .brand__text {
@@ -223,6 +218,14 @@ a:hover {
 
 .name {
   font-size: 1.08em;
+}
+
+.brand__title {
+  color: var(--ink);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
 }
 
 .brand__kind {
@@ -847,7 +850,7 @@ a:hover {
 }
 
 @media (forced-colors: active) {
-  .seal,
+  .brand__avatar,
   .hero__lead,
   .notice,
   .prose blockquote {
